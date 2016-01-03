@@ -1,5 +1,0 @@
----
-
-# The installation state for system apps
-# choices: [ present, latest, absent ]
-install_state: latest
