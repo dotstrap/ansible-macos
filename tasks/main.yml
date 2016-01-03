@@ -1,8 +1,5 @@
 ---
 
-# - name: setup
-  # include_vars: "{{ ansible_user_shell | basename }}.yml"
-
 #####=== install ===#####
 
 - name: OS X | update
@@ -10,11 +7,15 @@
   when: ansible_distribution == 'MacOSX'
   tags:
     - bootstrap
+    - install
     - update
 
 #####=== configure ===#####
 
-# TODO: transition to using the osx_defaults module instead of osx.sh
-shell: osx.sh
-when: ansible_distribution == 'MacOSX'
-tags: bootstrap
+# TODO: use the osx_defaults module instead of osx.sh
+- name: OS X | configure
+  shell: osx.sh
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - bootstrap
+    - configure
