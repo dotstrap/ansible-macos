@@ -8,11 +8,13 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+[[ $# -ne 1 ]] && echo -e "Please input desired computer name" && exit 1
+
+computer_name=$1 
+
 ################################################################################
-# System & Hardware 														   #
+# System & Hardware 														                               #
 ################################################################################
-fill_line \# 80 n
-echo -e "Configuring System & Hardware "
 
 # Enable TRIM support for non-Apple SSDs per <http://www.return1.at/trim-enabler-for-osx/>
 # sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage #/System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage.original
@@ -35,37 +37,31 @@ sudo pmset -a disksleep 30
 ###############################################################################
 
 # Disable local Time Machine snapshots
-sudo tmutil disablelocal
+# sudo tmutil disablelocal
 
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
-sudo rm /private/var/vm/sleepimage
+# sudo rm /private/var/vm/sleepimage
 # Create a zero-byte file instead…
-sudo touch /private/var/vm/sleepimage
+# sudo touch /private/var/vm/sleepimage
 # …and make sure it can’t be rewritten
-sudo chflags uchg /private/var/vm/sleepimage
+# sudo chflags uchg /private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
-sudo pmset -a sms 0
+# sudo pmset -a sms 0
 
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring General UI/UX"
 
 # Set computer name (as done via System Preferences → Sharing)
-# TODO prompt user for name input? http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html
 
-echo "Enter the name for your computer: "
-read name # TODO figure a way around reading spaces in the name
-
-sudo scutil --set ComputerName $name
-sudo scutil --set HostName $name
-sudo scutil --set LocalHostName $name
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $name
+sudo scutil --set ComputerName $computer_name
+sudo scutil --set HostName $computer_name
+sudo scutil --set LocalHostName $computer_name
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $computer_name
 
 # Enable dark mode introduced in Yosemite
 sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark
@@ -83,7 +79,7 @@ defaults write com.apple.menuextra.battery ShowTime -string "NO"
 defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Volume.menu", "/System/Library/CoreServices/Menu Extras/Clock.menu", "/System/Library/CoreServices/Menu Extras/User.menu"
 
 # Always hide scrollbars
-defaults delete NSGlobalDomain AppleShowScrollBars ###-string "Always"
+# defaults delete NSGlobalDomain AppleShowScrollBars ###-string "Always"
 
 # Disable smooth scrolling
 # (Uncomment if you’re on an older Mac that messes up the animation)
@@ -103,7 +99,7 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
 # Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool true
+# defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool true
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -150,8 +146,6 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Trackpad, mouse, keyboard, Bluetooth accessories, and input "
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -223,8 +217,6 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Screen"
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -248,8 +240,6 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Finder"
 
 # TODO modify login items
 
@@ -347,12 +337,9 @@ chflags nohidden ~/Library
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Dock, Dashboard, and hot corners"
 
-
-# Position on the left
-defaults write com.apple.dock orientation -string "left"
+# Position on the right
+defaults write com.apple.dock orientation -string "right"
 
 # Disable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilte-stack -bool false
@@ -430,8 +417,6 @@ ln -s /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Appli
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Safari"
 
 # Set Safari’s home page to `about:blank` for faster loading
 defaults write com.apple.Safari HomePage -string "about:blank"
@@ -481,8 +466,6 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 ###############################################################################
 # iTunes                                                                      #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring iTunes"
 
 # Disable the iTunes store link arrows
 # defaults write com.apple.iTunes show-store-link-arrows -bool false
@@ -508,8 +491,6 @@ defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Fi
 ###############################################################################
 # Mail                                                                        #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Mail"
 
 # Disable send and reply animations in Mail.app
 # defaults write com.apple.Mail DisableReplyAnimations -bool true
@@ -524,8 +505,6 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\\U21a9"
 ###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Spotlight"
 
 # Hide Spotlight tray-icon (and subsequent helper)
 #sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
@@ -561,8 +540,6 @@ sudo mdutil -E / > /dev/null
 ###############################################################################
 # Terminal                                                                    #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Terminal"
 
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
@@ -590,8 +567,6 @@ defaults write org.x.X11 wm_ffm -bool true
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Time Machine"
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -602,8 +577,6 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring Address Book, Dashboard, iCal, TextEdit, and Disk Utility"
 
 # Enable the debug menu in Address Book
 defaults write com.apple.addressbook ABShowDebugMenu -bool true
@@ -627,8 +600,6 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true
 ###############################################################################
 # Mac App Store                                                               #
 ###############################################################################
-fill_line \# 80 n
-echo -e "Configuring App Store"
 
 # Enable the WebKit Developer Tools in the Mac App Store
 defaults write com.apple.appstore WebKitDeveloperExtras -bool true
@@ -693,4 +664,4 @@ for app in "Contacts" "Calendar" "Contacts" "Dashboard" "Dock" "Finder" \
 	killall "$app" > /dev/null 2>&1
 done
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+echo -e "Done. Note that some of these changes require a logout/restart to take effect."

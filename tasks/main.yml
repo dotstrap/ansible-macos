@@ -14,7 +14,7 @@
 
 # TODO: use the osx_defaults module instead of osx.sh
 - name: configure | system
-  script: osx.sh
+  script: osx.sh {{ ansible_hostname }}
   when: ansible_distribution == 'MacOSX'
   tags:
     - bootstrap

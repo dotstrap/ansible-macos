@@ -1,5 +1,5 @@
 ---
-os: osx
+language: objective-c
 sudo: required
 
 before_install:
@@ -12,12 +12,9 @@ install:
 
 script:
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-  - ansible-playbook tests/test.yml -i tests/inventory -c local -vvv -b
-  # - >
-    # ansible-playbook tests/test.yml -i tests/inventory -c local -b
-    # | grep -q 'changed=0.*failed=0'
-    # && (echo 'Idempotence test: pass' && exit 0)
-    # || (echo 'Idempotence test: fail' && exit 1)
-
+  - ansible-playbook tests/test.yml -i tests/inventory -c local -vvv -b -t configure
+  # - [ $(defaults read com.apple.battery ShowPercent) == "YES" ]
+  - "[ $(defaults read /Library/Preferences/.GlobalPreferences
+    AppleInterfaceTheme) == 'Dark' ]"
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
