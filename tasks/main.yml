@@ -12,12 +12,12 @@
 
 #####=== configure ===#####
 
+- command: ls -al
+
 # TODO: use the osx_defaults module instead of osx.sh
 - name: configure | system
-  command: osx.sh
-  args:
-    chdir: files
-  when: ansible_distribution == 'MacOSX'
+  script: osx.sh
+  # when: ansible_distribution == 'MacOSX'
   tags:
     - bootstrap
     - configure
