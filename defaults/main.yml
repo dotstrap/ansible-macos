@@ -1,0 +1,15 @@
+---
+
+#####=== global defaults ===#####
+
+configure_state: present
+
+#####=== osx defaults ===#####
+
+# The state in which settings are written
+# choices: [ present, absent ]
+osx_configure_state: "{{ configure_state }}"
+
+# The marker line (which surrounds the text block) template.
+# "{mark}" will be replaced with "BEGIN" or "END".
+osx_marker: "#####=== {mark} Ansible managed z-prompt settings ===#####"
