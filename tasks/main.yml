@@ -2,9 +2,9 @@
 
 #####=== install ===#####
 
-- name: OS X | update
+- name: update | system
   command: 'softwareupdate --install --all'
-  when: ansible_distribution == 'MacOSX'
+  when: (ansible_distribution == 'MacOSX') and (install_state == 'latest')
   tags:
     - bootstrap
     - install
@@ -13,8 +13,8 @@
 #####=== configure ===#####
 
 # TODO: use the osx_defaults module instead of osx.sh
-- name: OS X | configure
-  shell: osx.sh
+- name: configure | system
+  shell: ./osx.sh
   when: ansible_distribution == 'MacOSX'
   tags:
     - bootstrap

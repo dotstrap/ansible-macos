@@ -1,18 +1,13 @@
 ansible-osx
 =========
-<!-- [![Build Status](https://travis-ci.org/mkwmms/ansible-osx.svg)](https://travis-ci.org/mkwmms/z) -->
+[![Build Status](https://travis-ci.org/mkwmms/ansible-osx.svg?branch=master)](https://travis-ci.org/mkwmms/ansible-osx)
 
-Bootstrap & manage OS X.
+Bootstrap, configure, & manage OS X.
 
 Requirements
 ------------
 
 None.
-
-Role Variables
---------------
-
-See [default variables].
 
 Dependencies
 ------------
