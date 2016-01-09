@@ -2,12 +2,19 @@ ansible-osx
 =========
 [![Build Status](https://travis-ci.org/mkwmms/ansible-osx.svg?branch=master)](https://travis-ci.org/mkwmms/ansible-osx)
 
-Bootstrap, configure, & manage OS X.
+Bootstrap, configure, & manage [OS X].
+
+Installation
+------------
+
+```
+ansible-galaxy install mkwmms.osx
+```
 
 Requirements
 ------------
 
-None.
+[OS X].
 
 Dependencies
 ------------
@@ -18,9 +25,9 @@ Example Playbook
 ----------------
 
 ```
-    - hosts: servers
+    - hosts: all
       roles:
-         - { role: mkwmms.osx }
+         - role: mkwmms.osx
 ```
 
 License
@@ -42,6 +49,7 @@ Author Information
 [files]: files/
 [fish]: http://fishshell.com/
 [homebrew]: https://github.com/Homebrew/homebrew
+[OS X]: http://www.apple.com/osx/
 [pure]: https://github.com/sindresorhus/pure
 [variables]: vars/main.yml
 [yaourt]: https://github.com/archlinuxfr/yaourt
