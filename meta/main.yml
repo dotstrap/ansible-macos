@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: mkwmms
-  description: Bootstrap, configure, & manage OS X
+  description: 'Bootstrap, configure, & manage OS X'
   license: GPLv3
   min_ansible_version: 2.0
   platforms:
