@@ -1,6 +1,6 @@
 ansible-osx
 =========
-[![Build Status](https://travis-ci.org/mkwmms/ansible-osx.svg?branch=master)](https://travis-ci.org/mkwmms/ansible-osx)
+[![Build Status](https://travis-ci.org/mwilliammyers/ansible-osx.svg?branch=master)](https://travis-ci.org/mwilliammyers/ansible-osx)
 
 Bootstrap, configure, & manage [OS X].
 
@@ -8,7 +8,7 @@ Installation
 ------------
 
 ```
-ansible-galaxy install mkwmms.osx
+ansible-galaxy install mwilliammyers.osx
 ```
 
 Requirements
@@ -27,7 +27,7 @@ Example Playbook
 ```
     - hosts: all
       roles:
-         - role: mkwmms.osx
+         - role: mwilliammyers.osx
 ```
 
 License
@@ -38,13 +38,13 @@ GPLv3
 Author Information
 ------------------
 
-[@mkwmms]
+[@mwilliammyers]
 
-[@mkwmms]: https://github.com/mkwmms
+[@mwilliammyers]: https://github.com/mwilliammyers
 [aura]: https://github.com/aurapm/aura
 [bash]: https://www.gnu.org/software/bash/manual/bashref.html
 [default variables]: defaults/main.yml
-[dotstrap]: https://github.com/mkwmms/dotstrap
+[dotstrap]: https://github.com/mwilliammyers/dotstrap
 [fasd]: https://github.com/clvv/fasd
 [files]: files/
 [fish]: http://fishshell.com/
