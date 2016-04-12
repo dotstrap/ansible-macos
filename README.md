@@ -1,6 +1,6 @@
 ansible-osx
 =========
-[![Build Status](https://travis-ci.org/mwilliammyers/ansible-osx.svg?branch=master)](https://travis-ci.org/mwilliammyers/ansible-osx)
+[![Build Status](https://travis-ci.org/dotstrap/ansible-osx.svg?branch=master)](https://travis-ci.org/dotstrap/ansible-osx)
 
 Bootstrap, configure, & manage [OS X].
 
@@ -8,7 +8,7 @@ Installation
 ------------
 
 ```
-ansible-galaxy install mwilliammyers.osx
+ansible-galaxy install dotstrap.osx
 ```
 
 Requirements
@@ -27,7 +27,7 @@ Example Playbook
 ```
     - hosts: all
       roles:
-         - role: mwilliammyers.osx
+         - role: dotstrap.osx
 ```
 
 License
