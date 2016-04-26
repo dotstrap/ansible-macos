@@ -3,7 +3,7 @@
 galaxy_info:
   author: mwilliammyers
   description: 'Bootstrap, configure, & manage OS X'
-  license: GPLv3
+  license: MIT
   min_ansible_version: 2.0
   platforms:
     - name: GenericUNIX
