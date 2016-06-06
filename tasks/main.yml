@@ -7,8 +7,11 @@
   when: ansible_distribution == 'MacOSX'
   tags:
     - bootstrap
+    - bootstrap_osx
     - install
+    - install_osx
     - update
+    - update_osx
 
 #####=== configure ===#####
 
@@ -18,4 +21,6 @@
   when: ansible_distribution == 'MacOSX'
   tags:
     - bootstrap
+    - bootstrap_osx
     - configure
+    - configure_osx
