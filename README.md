@@ -1,4 +1,4 @@
-ansible-osx
+ansible-macos
 =========
 [![Build Status](https://travis-ci.org/dotstrap/ansible-osx.svg?branch=master)](https://travis-ci.org/dotstrap/ansible-macos)
 
