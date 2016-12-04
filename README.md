@@ -1,8 +1,8 @@
 ansible-osx
 =========
-[![Build Status](https://travis-ci.org/dotstrap/ansible-osx.svg?branch=master)](https://travis-ci.org/dotstrap/ansible-osx)
+[![Build Status](https://travis-ci.org/dotstrap/ansible-osx.svg?branch=master)](https://travis-ci.org/dotstrap/ansible-macos)
 
-Bootstrap, configure, & manage [OS X].
+Bootstrap, configure, & manage macOS.
 
 Installation
 ------------
@@ -14,7 +14,7 @@ ansible-galaxy install dotstrap.osx
 Requirements
 ------------
 
-[OS X].
+macOS
 
 Dependencies
 ------------
@@ -49,7 +49,7 @@ Author Information
 [files]: files/
 [fish]: http://fishshell.com/
 [homebrew]: https://github.com/Homebrew/homebrew
-[OS X]: http://www.apple.com/osx/
+[macOS]: http://www.apple.com/osx/
 [pure]: https://github.com/sindresorhus/pure
 [variables]: vars/main.yml
 [yaourt]: https://github.com/archlinuxfr/yaourt
