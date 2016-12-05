@@ -1,0 +1,59 @@
+macos_use_default_values: no
+
+macos_settings:
+  - domain: NSGlobalDomain 
+    keys: 
+      - name: NSAutomaticQuoteSubstitutionEnabled
+        type: bool
+        value: 0
+        default_value: 1
+      - name: AppleInterfaceStyle
+        type: string
+        value: Dark
+        default_value: Light
+      - name: _HIHideMenuBar
+        type: bool
+        value: 0
+        default_value: 0
+  - domain: com.apple.finder
+    keys:
+      - name: FXRemoveOldTrashItems
+        type: bool
+        value: 1
+        default_value: 0
+      - name: FXEnableExtensionChangeWarning
+        type: bool
+        value: 0
+        default_value: 1
+      - name: FXEnableRemoveFromICloudDriveWarning
+        type: bool
+        value: 0
+        default_value: 1
+  - domain: com.apple.dock
+    keys: 
+      - name: autohide
+        type: bool
+        value: 1
+        default_value: 0
+      - name: tilesize
+        type: float
+        value: 55
+        default_value: 50
+      - name: orientation
+        type: string
+        value: left
+        default_value: bottom
+      - name: magnification
+        type: bool
+        value: 0
+        default_value: 0
+  - domain: com.apple.speech.recognition.AppleSpeechRecognition.prefs
+    keys: 
+      - name: DictationIMUseOnlyOfflineDictation
+        type: bool
+        value: 1
+        default_value: 0
+      - name: DictationIMMasterDictationEnabled
+        type: bool
+        value: 1
+        default_value: 0

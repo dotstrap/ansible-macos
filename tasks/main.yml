@@ -2,25 +2,31 @@
 
 #####=== install ===#####
 
-- name: update | system
-  command: 'softwareupdate --install --all'
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - bootstrap
-    - bootstrap_osx
-    - install
-    - install_osx
-    - update
-    - update_osx
+# - name: update | system
+  # command: 'softwareupdate --install --all'
+  # when: ansible_distribution == 'MacOSX'
+  # tags:
+    # - bootstrap
+    # - bootstrap_macos
+    # - install
+    # - install_macos
+    # - update
+    # - update_macos
 
 #####=== configure ===#####
 
-# TODO: use the osx_defaults module instead of osx.sh
 - name: configure | system
-  script: osx.sh {{ ansible_hostname }}
+  osx_defaults: 
+    domain: "{{ item.0.domain }}"
+    key: "{{ item.1.name }}"
+    type: "{{ item.1.type }}"
+    value: "{{ (macos_use_default_values == true) | ternary(item.1.default_value, item.1.value) }}"
+  with_subelements: 
+    - "{{ macos_settings }}"
+    - keys
   when: ansible_distribution == 'MacOSX'
   tags:
     - bootstrap
-    - bootstrap_osx
+    - bootstrap_macos
     - configure
-    - configure_osx
+    - configure_macos
