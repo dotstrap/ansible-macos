@@ -21,13 +21,18 @@ Dependencies
 
 None.
 
+Role Variables
+--------------
+
+See [default variables].
+
 Example Playbook
 ----------------
 
 ```
     - hosts: all
       roles:
-         - role: dotstrap.osx
+         - role: dotstrap.macos
 ```
 
 License
@@ -41,6 +46,7 @@ Author Information
 [@mwilliammyers]
 
 [@mwilliammyers]: https://github.com/mwilliammyers
+[default variables]: defaults/main.yml
 [aura]: https://github.com/aurapm/aura
 [bash]: https://www.gnu.org/software/bash/manual/bashref.html
 [default variables]: defaults/main.yml
