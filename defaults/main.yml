@@ -35,6 +35,9 @@ macos_settings:
         type: bool
         value: 1
         default_value: 0
+      - name: autohide-delay
+        type: float
+        value: 0
       - name: tilesize
         type: float
         value: 55
