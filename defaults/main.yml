@@ -11,10 +11,10 @@ macos_settings:
         type: string
         value: Dark
         default_value: Light
-      - name: _HIHideMenuBar
-        type: bool
-        value: false
-        default_value: false
+      # - name: _HIHideMenuBar
+        # type: bool
+        # value: false
+        # default_value: false
   - domain: com.apple.finder
     keys:
       - name: FXRemoveOldTrashItems
@@ -46,10 +46,10 @@ macos_settings:
         type: string
         value: left
         default_value: bottom
-      - name: magnification
-        type: bool
-        value: false
-        default_value: false
+      # - name: magnification
+        # type: bool
+        # value: false
+        # default_value: false
   - domain: com.apple.safari
     keys:
       - name: IncludeDevelopMenu
