@@ -5,36 +5,36 @@ macos_settings:
     keys: 
       - name: NSAutomaticQuoteSubstitutionEnabled
         type: bool
-        value: 0
-        default_value: 1
+        value: false
+        default_value: true
       - name: AppleInterfaceStyle
         type: string
         value: Dark
         default_value: Light
       - name: _HIHideMenuBar
         type: bool
-        value: 0
-        default_value: 0
+        value: false
+        default_value: false
   - domain: com.apple.finder
     keys:
       - name: FXRemoveOldTrashItems
         type: bool
-        value: 1
-        default_value: 0
+        value: true
+        default_value: false
       - name: FXEnableExtensionChangeWarning
         type: bool
-        value: 0
-        default_value: 1
+        value: false
+        default_value: true
       - name: FXEnableRemoveFromICloudDriveWarning
         type: bool
-        value: 0
-        default_value: 1
+        value: false
+        default_value: true
   - domain: com.apple.dock
     keys: 
       - name: autohide
         type: bool
-        value: 1
-        default_value: 0
+        value: true
+        default_value: false
       - name: autohide-delay
         type: float
         value: 0
@@ -48,8 +48,8 @@ macos_settings:
         default_value: bottom
       - name: magnification
         type: bool
-        value: 0
-        default_value: 0
+        value: false
+        default_value: false
   - domain: com.apple.safari
     keys:
       - name: IncludeDevelopMenu
@@ -60,9 +60,9 @@ macos_settings:
     keys: 
       - name: DictationIMUseOnlyOfflineDictation
         type: bool
-        value: 1
-        default_value: 0
+        value: true
+        default_value: false
       - name: DictationIMMasterDictationEnabled
         type: bool
-        value: 1
-        default_value: 0
+        value: true
+        default_value: false
