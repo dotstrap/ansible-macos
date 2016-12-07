@@ -50,6 +50,12 @@ macos_settings:
         type: bool
         value: 0
         default_value: 0
+  - domain: com.apple.safari
+    keys:
+      - name: IncludeDevelopMenu
+        type: bool
+        value: true
+        default_value: false
   - domain: com.apple.speech.recognition.AppleSpeechRecognition.prefs
     keys: 
       - name: DictationIMUseOnlyOfflineDictation
