@@ -15,15 +15,21 @@
 
 #####=== configure ===#####
 
-- name: configure | system
-  osx_defaults: 
-    domain: "{{ item.0.domain }}"
-    key: "{{ item.1.name }}"
-    type: "{{ item.1.type }}"
-    value: "{{ (macos_use_default_values == true) | ternary(item.1.default_value, item.1.value) }}"
-  with_subelements: 
-    - "{{ macos_settings }}"
-    - keys
+- block:
+  - name: configure | system
+    osx_defaults: 
+      domain: "{{ item.0.domain }}"
+      key: "{{ item.1.name }}"
+      type: "{{ item.1.type }}"
+      value: "{{ macos_use_default_values | ternary(item.1.default_value, item.1.value) }}"
+    with_subelements: 
+      - "{{ macos_settings }}"
+      - keys
+  
+  - name: configure | unhide user library
+    command: chflags "{{ item.flag }}" "{{ item.name }}"
+    with_items: "{{ macos_chflags_items }}"
+
   when: ansible_distribution == 'MacOSX'
   tags:
     - bootstrap

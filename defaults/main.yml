@@ -1,4 +1,8 @@
-macos_use_default_values: no
+macos_chflags_items:
+  - name: "{{ ansible_user_dir }}/Library"
+    flag: nohidden
+
+macos_use_default_values: false
 
 macos_settings:
   - domain: NSGlobalDomain 
