@@ -5,8 +5,12 @@ macos_chflags_items:
 macos_use_default_values: false
 
 macos_settings:
-  - domain: NSGlobalDomain 
-    keys: 
+  - domain: NSGlobalDomain
+    keys:
+      - name: NSNavPanelExpandedStateForSaveMode
+        type: bool
+        value: true
+        default_value: false
       - name: NSAutomaticQuoteSubstitutionEnabled
         type: bool
         value: false
@@ -34,7 +38,7 @@ macos_settings:
         value: false
         default_value: true
   - domain: com.apple.dock
-    keys: 
+    keys:
       - name: autohide
         type: bool
         value: true
@@ -61,7 +65,7 @@ macos_settings:
         value: true
         default_value: false
   - domain: com.apple.speech.recognition.AppleSpeechRecognition.prefs
-    keys: 
+    keys:
       - name: DictationIMUseOnlyOfflineDictation
         type: bool
         value: true
